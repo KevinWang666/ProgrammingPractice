@@ -1,0 +1,32 @@
+package com.zuikc;
+
+import java.util.ArrayList;
+
+/*有n个人围成一圈，顺序排号。从第一个人开始报数(从1到3报数)，
+ * 凡报到3的人退出圈子，问最后留下
+的是原来第几号的那位。*/
+public class Number {
+
+	public static void main(String[] args) {
+		int n = 5;
+		int index = 0;
+		int count = 3;
+		ArrayList<Integer> list = new ArrayList<>();
+		for (int i = 0; i < n; i++) {
+			list.add(i + 1);
+		}
+		System.out.println(list);
+		while(list.size() > 1){
+			if(count == 1){
+				list.remove(index);
+				index = index >= list.size() ? 0 : index;
+				count = 3;
+			}else{
+				count--;
+				index = index == list.size() - 1 ? 0 : index + 1;
+			}
+		}
+		System.out.println(list);
+	}
+
+}

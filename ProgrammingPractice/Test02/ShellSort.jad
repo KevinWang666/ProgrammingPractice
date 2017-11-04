@@ -1,0 +1,38 @@
+package com.zuikc;
+
+import java.util.Arrays;
+
+public class ShellSort {
+
+	public static void main(String[] args) {
+		//希尔排序复习
+		int[] arr = { 2, 3, 1, 56, 7, 89, 0, -9, 76, 5, 68, 9, 5, 4, 3, 6 };
+		//初始间隔为数组长度，逐渐减小到1
+		//外层循环控制间隔长度
+		for(int derta = arr.length; derta >= 1 ; derta /= 2){
+			for(int k = 0; k < derta ; k++){//每个子序列的起始坐标不同
+				
+			//对每个子序列插入排序
+			for(int i = k; i < arr.length - derta  ; i += derta){
+				for(int j = i + derta ; j > k ; j -= derta){
+					if(arr[j] < arr[j - derta]){
+						swap(arr , j , j - derta);
+					}else{    
+						break;
+					}
+				}
+			}
+			} 
+		}
+		System.out.println(Arrays.toString(arr) + "四层循环，真NB");
+	}
+
+	private static void swap(int[] arr, int j, int i) {
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+
+	
+
+}

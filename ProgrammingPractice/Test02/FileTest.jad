@@ -1,0 +1,22 @@
+package com.zuikc;
+
+import java.io.File;
+import java.io.FileFilter;
+
+public class FileTest {
+
+	public static void main(String[] args) {
+		File f = new File("a.txt");
+		File[] fs = f.listFiles(new FileFilter(){
+
+			@Override
+			public boolean accept(File pathname) {
+				
+				return false;
+			}
+			
+		});
+		
+	}
+
+}

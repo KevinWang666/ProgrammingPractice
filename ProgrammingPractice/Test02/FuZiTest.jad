@@ -1,0 +1,33 @@
+package com.zuikc;
+
+import java.util.ArrayList;
+
+public class FuZiTest {
+
+	public static void main(String[] args) {
+		Fu f = new Zi();
+		f.test();
+		Zi z = new Zi();
+		z.test();
+		Fu.test();
+		
+		ArrayList<? super Fu> list = new ArrayList<>();
+		list.add(new Zi());
+		list.add(new Fu());
+		
+	}
+
+}
+
+
+class Fu {
+	public static void test(){
+		System.out.println("父类静态方法！");
+	}
+}
+
+class Zi extends Fu{
+	public static void test(){
+		System.out.println("子类静态方法！");
+	}
+}

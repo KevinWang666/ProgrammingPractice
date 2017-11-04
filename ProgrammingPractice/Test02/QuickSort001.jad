@@ -1,0 +1,40 @@
+package com.zuikc;
+
+import java.util.Arrays;
+
+public class QuickSort001 {
+
+	public static void main(String[] args) {
+		// 快排练习
+		int[] arr = { 2, 3, 1, 56, 7, 89, 0, -9, 76, 5, 68, 9, 5, 4, 3, 6 };
+		quickSort(arr, 0, arr.length - 1);
+		System.out.println(Arrays.toString(arr));
+	}
+
+	private static void quickSort(int[] arr, int st, int end) {
+		// 最低、最高坐标，标记值
+		int indexLow = st;
+		int indexHigh = end;
+		int flag = arr[st];
+		while (indexLow < indexHigh) {
+			while (arr[indexHigh] > flag && indexLow < indexHigh) {//大于标记值的跳过
+				indexHigh--;
+			}
+			if (indexLow < indexHigh) {
+				arr[indexLow] = arr[indexHigh];
+				indexLow++;
+			}
+			while (arr[indexLow] < flag && indexLow < indexHigh) {
+				indexLow++;
+			}
+			if (indexLow < indexHigh) {
+				arr[indexHigh] = arr[indexLow];
+				indexHigh--;
+			}
+			arr[indexLow] = flag;
+			quickSort(arr, st, indexLow - 1);
+			quickSort(arr, indexLow + 1, end);
+		}
+	}
+
+}

@@ -1,0 +1,34 @@
+package com.zuikc;
+
+public class Permutation {
+
+	public static void main(String[] args) {
+		//¸´Ï°È«ÅÅÁĞËã·¨
+		String str = "abcdef";
+		char[] arr = str.toCharArray();
+		permutation(arr, 0 ,str.length() - 1);
+ 	}
+
+	private static void permutation(char[] arr, int start, int end) {
+		if(start == end){
+			for(int i = 0; i <= end ;i++){
+				System.out.print(arr[i]);
+			}
+			System.out.println();
+		}else{
+			//ÂÖ»»
+			for(int i = start ; i <= end ; i++ ){
+				swap(arr, i , start);
+				permutation(arr, start + 1 , end);
+				swap(arr, i , start);
+			}
+		}
+	}
+
+	private static void swap(char[] arr, int i, int j) {
+		char temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+
+}

@@ -1,0 +1,23 @@
+package com.zuikc;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.PipedOutputStream;
+import java.io.Serializable;
+
+public class XuLieTest {
+	public static void main(String[] args) throws IOException, IOException {
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("XuLieTest.txt"));
+		oos.writeObject(new BForSer());
+	}
+}
+class AForSer{
+	
+}
+class BForSer implements Serializable{
+	AForSer a;
+	int n;
+}
+

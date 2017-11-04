@@ -1,0 +1,44 @@
+package com.zuikc;
+
+import java.util.Scanner;
+
+public class ThreadTest001 {
+
+	public static void main(String[] args) throws InterruptedException {
+		Thread[] ts = new Thread[50];
+		for (int i = 0; i < 50; i++) {
+			ts[i] = new A();
+		}
+		A a = new A();
+		a.start();
+		a.join();
+		for (int i = 0; i < ts.length; i++) {
+			ts[i].start();
+			ts[i].join();
+		}
+		/*for (int i = 0; i < ts.length; i++) {
+			ts[i].join();
+		}*/
+		System.out.println("nµÄÖµÎª£º" + A.n);
+}
+}
+
+class A extends Thread {
+	public static int n = 0;
+
+	@Override
+	public void run() {
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (int i = 0; i < 10; i++) {
+			//System.out.println(n++);
+			n++;
+		}
+
+	}
+}
+

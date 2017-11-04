@@ -1,0 +1,73 @@
+package com.zuikc;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+public class CopyOfFuZiTest {
+
+	public static void main(String[] args) throws NoSuchMethodException, SecurityException, Exception, Exception, InvocationTargetException {
+		Class c = Zi1.class;
+		Object obj = c.newInstance();
+		Method m = c.getMethod("isWork", null);
+		
+		/*Method[] ms = c.getMethods();
+		for (Method method : ms) {//查看所有方法
+			System.out.println(method);
+		}
+		m.invoke(obj, null);
+		c.getSuperclass().getMethod("isWork", null).invoke(c.getSuperclass().newInstance(), null);//查看父类中被重写的方法
+		
+*/	
+		Class c2 = DD.class;
+		for (Method method : c2.getMethods()) {//查看所有方法
+			System.out.println(method);
+		}
+	}
+
+}
+
+
+class Fu1 {
+	private int num;
+	/*public static void test(){
+		System.out.println("父类静态方法！");
+	}*/
+	public void isWork(){
+		System.out.println("父类Work方法！");
+	}
+}
+
+class Zi1 extends Fu1{
+	public static void test(){
+		System.out.println("子类静态方法！");
+	}
+	/*public void test1(){
+		System.out.println();
+	}*/
+	public void isWork(){
+		System.out.println("子类Work方法！");
+	}
+}
+
+interface AA {
+	void test();
+}
+interface B {
+	void test();
+}
+interface C {
+	void test();
+}
+interface D extends AA,B,C {
+}
+
+class DD implements AA,B,C {
+
+	@Override
+	public void test() {
+		System.out.println("呜啦啦啦");
+	}
+	
+}
+
+

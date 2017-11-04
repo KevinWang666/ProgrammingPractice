@@ -1,0 +1,11 @@
+package com.zuikc;
+public class Transition {
+
+	public static void main(String[] args) {
+		//Object obj = new Transition();
+		Object obj = new Object();//从该实验可以看出，向下转型的前提条件是之前进行过向上转型
+		Transition t = (Transition)obj ;
+		
+	}
+
+}

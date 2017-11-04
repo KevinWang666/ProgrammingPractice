@@ -1,0 +1,40 @@
+package com.zuikc;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.DatagramChannel;
+
+public class NIO_Send {
+
+	public static void main(String[] args) throws Exception {
+		InetAddress ia = InetAddress.getLocalHost();
+		DatagramSocket ds = new DatagramSocket();
+		
+		byte[] arr = "呜啦啦啦，荆轲刺秦王".getBytes();
+		DatagramChannel dc = ds.getChannel();
+		
+		//创建Buffer
+		ByteBuffer bb = ByteBuffer.allocate(1024);
+		//缓冲区中加入数据
+		bb.put(arr);
+		
+		//写入数据
+		dc.write(bb);
+		
+		
+		dc.close();
+	/*	Socket s = new Socket(ia , 8080);
+		SocketChannel sc = s.getChannel();
+		InputStream is =  s.getInputStream();
+		ServerSocket  ss = new ServerSocket(8080);
+		ServerSocketChannel ssc = ss.getChannel();
+		
+		
+		DatagramChannel dcs = new DatagramSocket(8080).getChannel();*/
+		
+		
+	} 
+
+}

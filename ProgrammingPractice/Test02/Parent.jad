@@ -1,0 +1,28 @@
+package com.zuikc;
+
+/*class Parentss {
+ public int count() {     // 第1行
+ return 0;
+ }
+ }*/
+class Parentss {
+	int a;
+	private int count() { // 第1行
+		return 0;
+	}
+}
+
+class Test extends Parentss{
+	double a;
+	public int count() { // 第2行
+		return 9; // 第3行
+	}
+	void test(){
+		System.out.println("a = " + a +"父类中的a =" + super.a);
+	}
+	public static void main(String[] args) {
+		new Test().test(); 
+		System.out.println(new Test().count()); 
+		
+	}
+}

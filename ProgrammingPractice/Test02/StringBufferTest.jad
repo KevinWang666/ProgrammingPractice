@@ -1,0 +1,18 @@
+package com.zuikc;
+
+public class StringBufferTest {
+
+	public static void main(String[] args) {
+		String s = "123456789012345612345678901234561234567890";
+		
+		int index = s.indexOf(50);
+		//System.out.println(index);
+		
+		StringBuffer sb = new StringBuffer().append(s);
+		
+		//System.out.println(sb.capacity());
+		
+		System.out.println(System.in.getClass().getName());
+	}
+
+}

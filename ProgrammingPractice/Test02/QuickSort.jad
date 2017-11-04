@@ -1,0 +1,42 @@
+package com.zuikc;
+
+import java.util.Arrays;
+
+public class QuickSort {
+
+	public static void main(String[] args) {
+		//练习快排
+		int[] arr = { 2, 3, 1, 56, 7, 89, 0, -9, 76, 5, 68, 9, 5, 4, 3, 6 };
+		quickSort(arr , 0 , arr.length - 1);
+		System.out.println(Arrays.toString(arr));
+	}
+
+	private static void quickSort(int[] arr, int low, int high) {
+		if(low >= high){//二货，没有加结束条件。。。
+			return;
+		}
+		int indexL = low;
+		int indexH = high;
+		int flag = arr[low];//最低位作为标记索引
+		while(indexL < indexH){
+			while(flag < arr[indexH] && indexL < indexH){
+				indexH--;
+			}
+			if(indexL < indexH){
+				arr[indexL] = arr[indexH];
+				indexL++;
+			}
+			while(flag > arr[indexL] && indexL < indexH){
+				indexL++;
+			}
+			if(indexL < indexH){
+				arr[indexH] = arr[indexL];
+				indexH--;
+			}
+		}
+		arr[indexL] = flag;
+		quickSort(arr, low , indexL - 1);
+		quickSort(arr, indexL + 1, high);
+	}
+
+}
